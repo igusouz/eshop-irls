@@ -8,7 +8,7 @@
     internal class CreateProductCommandHandler(IDocumentSession session) 
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
-        async public Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+        public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
             // Create a product.
             var product = new Product
