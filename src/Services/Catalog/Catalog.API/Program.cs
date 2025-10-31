@@ -1,13 +1,19 @@
+using BuildingBlocks.Behaviors;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddCarter();
+var assembly = typeof(Program).Assembly;
+
 builder.Services.AddMediatR(config =>
 {
-    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.RegisterServicesFromAssembly(assembly);
 });
 
-builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+builder.Services.AddValidatorsFromAssembly(assembly);
+
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+builder.Services.AddCarter();
 
 builder.Services.AddMarten(opts =>
 {
@@ -16,7 +22,6 @@ builder.Services.AddMarten(opts =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 app.MapCarter();
 
 app.Run();
