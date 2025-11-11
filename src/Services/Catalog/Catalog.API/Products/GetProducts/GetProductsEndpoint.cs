@@ -1,7 +1,7 @@
 ﻿
 namespace Catalog.API.Products.GetProduct
 {
-    public record GetProductsRequest(int ? PagerNumber = 1, int ? PageSize = 10);
+    public record GetProductsRequest(int ? PageNumber = 1, int ? PageSize = 10);
 
     public record GetProductsResponse(IEnumerable<Product> Products);
 
