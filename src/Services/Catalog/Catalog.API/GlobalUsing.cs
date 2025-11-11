@@ -11,3 +11,4 @@ global using BuildingBlocks.Exceptions.Handler;
 global using Microsoft.Extensions.DependencyInjection;
 global using Marten.Schema;
 global using Catalog.API.Data;
+global using Marten.Pagination;
