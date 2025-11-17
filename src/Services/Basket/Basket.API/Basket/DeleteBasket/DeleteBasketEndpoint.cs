@@ -1,30 +1,26 @@
-﻿
-using Mapster;
+﻿namespace Basket.API.Basket.DeleteBasket;
 
-namespace Basket.API.Basket.DeleteBasket
+//public record DeleteBasketRequest(string UserName);
+
+public record DeleteBasketResponse(bool IsSuccess);
+
+public class DeleteBasketEndpoints : ICarterModule
 {
-    //public record DeleteBasketEndpointRequest(string UserName);
-
-    public record DeleteBasketResponse(bool IsSuccess);
-
-    public class DeleteBasketEndpoint : ICarterModule
+    public void AddRoutes(IEndpointRouteBuilder app)
     {
-        public void AddRoutes(IEndpointRouteBuilder app)
+        app.MapDelete("/basket/{userName}", async (string userName, ISender sender) =>
         {
-            app.MapDelete("/basket/{userName}", async (string userName, ISender sender) =>
-            {
-                var result = await sender.Send(new DeleteBasketCommand(userName));
+            var result = await sender.Send(new DeleteBasketCommand(userName));
 
-                var response = result.Adapt<DeleteBasketResponse>();
+            var response = result.Adapt<DeleteBasketResponse>();
 
-                return Results.Ok(response);
-            })
-            .WithName("DeleteBasket")
-            .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest)
-            .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Deletes the basket for a specific user.")
-            .WithDescription("Deletes the basket for a specific user by their username.");
-        }
+            return Results.Ok(response);
+        })
+        .WithName("DeleteProduct")
+        .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Delete Product")
+        .WithDescription("Delete Product");
     }
 }

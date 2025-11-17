@@ -8,3 +8,4 @@ global using Mapster;
 global using Marten;
 global using BuildingBlocks.Exceptions;
 global using Basket.API.Execptions;
+global using Basket.API.Data;

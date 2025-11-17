@@ -4,25 +4,25 @@
 
     public record StoreBasketResult(string UserName);
 
-    public class StoreBasketCommandValidator : AbstractValidator< StoreBasketCommand>
+    public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
     {
         public StoreBasketCommandValidator()
         {
-            RuleFor(x => x.Cart).NotNull().WithMessage("Shopping cart must be provided.");
-            RuleFor(x => x.Cart.UserName).NotEmpty().WithMessage("User name must be provided.");
+            RuleFor(x => x.Cart).NotNull().WithMessage("Cart can not be null");
+            RuleFor(x => x.Cart.UserName).NotEmpty().WithMessage("UserName is required");
         }
     }
 
-    public class StoreBasketCommmandHandler : ICommandHandler<StoreBasketCommand, StoreBasketResult>
+    public class StoreBasketCommmandHandler(IBasketRepository repository)
+        : ICommandHandler<StoreBasketCommand, StoreBasketResult>
     {
-        public async Task<StoreBasketResult> Handle(StoreBasketCommand commmand, CancellationToken cancellationToken)
+        public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
         {
-            ShoppingCart cart = commmand.Cart;
+            ShoppingCart cart = command.Cart;
 
-            // TODO: Implement the logic to store the shopping cart
-            // TODO: Update cache
-            
-            return new StoreBasketResult("swn");
+            await repository.StoreBasket(command.Cart, cancellationToken);
+
+            return new StoreBasketResult(command.Cart.UserName);
         }
     }
 }
