@@ -13,7 +13,11 @@
 
         public IDomainEvent[] ClearDomainEvents()
         {
-            throw new NotImplementedException();
+            IDomainEvent[] dequeuedEvents = _domainEvents.ToArray();
+
+            _domainEvents.Clear();
+
+            return dequeuedEvents;
         }
     }
 }
