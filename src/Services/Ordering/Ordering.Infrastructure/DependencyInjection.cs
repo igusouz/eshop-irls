@@ -12,7 +12,10 @@ namespace Ordering.Infrastructure
 
             // add to container
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            {
+                options.AddInterceptors(new AuditableEntityInterceptor());
+                options.UseSqlServer(connectionString);
+            });
 
             // services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
