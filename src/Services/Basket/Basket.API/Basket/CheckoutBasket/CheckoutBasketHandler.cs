@@ -1,26 +1,25 @@
-﻿
-using BuildingBlocks.Messaging.Events;
+﻿using BuildingBlocks.Messaging.Events;
 using MassTransit;
-using MassTransit.Transports;
 
 namespace Basket.API.Basket.CheckoutBasket
 {
-    public record CheckoutBasketCommand(BasketCheckoutDto BasketCheckoutDto) 
+    public record CheckoutBasketCommand(BasketCheckoutDto BasketCheckoutDto)
         : ICommand<CheckoutBasketResult>;
     public record CheckoutBasketResult(bool IsSuccess);
 
-    public class CheckoutBasketCommandValidator : AbstractValidator<CheckoutBasketCommand> 
+    public class CheckoutBasketCommandValidator
+        : AbstractValidator<CheckoutBasketCommand>
     {
-        public CheckoutBasketCommandValidator() 
+        public CheckoutBasketCommandValidator()
         {
-            RuleFor(x => x.BasketCheckoutDto).NotNull().WithMessage("BasketCheckoutDto can't be null");
+            RuleFor(x => x.BasketCheckoutDto).NotNull().WithMessage("BasketCheckoutDto can not be null");
             RuleFor(x => x.BasketCheckoutDto.UserName).NotEmpty().WithMessage("UserName is required");
         }
     }
 
     public class CheckoutBasketCommandHandler
-        (IBasketRepository repository, IPublishEndpoint publishEndpoint)
-        : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
+    (IBasketRepository repository, IPublishEndpoint publishEndpoint)
+    : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
     {
         public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
         {
