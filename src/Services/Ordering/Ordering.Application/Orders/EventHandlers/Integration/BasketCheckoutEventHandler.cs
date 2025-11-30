@@ -1,6 +1,5 @@
 ﻿using BuildingBlocks.Messaging.Events;
 using MassTransit;
-using Microsoft.Extensions.Logging;
 using Ordering.Application.Orders.Commands.CreateOrder;
 
 namespace Ordering.Application.Orders.EventHandlers.Integration
