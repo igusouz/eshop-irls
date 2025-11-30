@@ -1,4 +1,4 @@
-﻿namespace Basket.API.Execptions
+﻿namespace Basket.API.Exceptions
 {
     public class BasketNotFoundExecption : NotFoundException
     {
