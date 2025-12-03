@@ -1,7 +1,7 @@
 ﻿namespace Shopping.Web.Models.Ordering
 {
     public class PaginatedResult<TEntity>(int pageIndex, int pageSize, long count, IEnumerable<TEntity> data)
-    where TEntity : class
+        where TEntity : class
     {
         public int PageIndex { get; } = pageIndex;
         public int PageSize { get; } = pageSize;
