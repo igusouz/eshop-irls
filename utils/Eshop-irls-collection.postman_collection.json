@@ -1,0 +1,823 @@
+{
+	"info": {
+		"_postman_id": "d184773a-e0ad-466a-80ad-2509e3760700",
+		"name": "Eshop-irls-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26188560"
+	},
+	"item": [
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "Get products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products?pageNumber=1&pagesize=5",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/category/C3",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"C3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"New Prod A - Test \",\r\n    \"Category\": [\"B\"],\r\n    \"Description\": \"Blank Description\",\r\n    \"ImageFile\": \"Blank ImageFile\",\r\n    \"Price\": 555\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"019a7392-cbad-447c-bd26-294a31d98865\",\r\n    \"Name\": \"doidera\",\r\n    \"Category\": [\"C3\", \"C4\"],\r\n    \"Description\": \"Blank Description\",\r\n    \"ImageFile\": \"Blank ImageFile\",\r\n    \"Price\": 555\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting an existing product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/019a7392-cbad-447c-bd26-294a31d98865",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"019a7392-cbad-447c-bd26-294a31d98865"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/health",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "Get Basket By Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/basket/igor25",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"igor25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Basket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Cart\":\r\n        {\r\n            \"UserName\": \"igor22\",\r\n            \"Items\": [\r\n                {\r\n                    \"Quantity\": 2,\r\n                    \"Color\": \"Red\",\r\n                    \"Price\": 500,\r\n                    \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n                    \"ProductName\": \"IPhone X\"\r\n                },\r\n                {\r\n                    \"Quantity\": 1,\r\n                    \"Color\": \"blue\",\r\n                    \"Price\": 500,\r\n                    \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n                    \"ProductName\": \"Samsung 10\"\r\n                }\r\n            ]\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basket_url}}/basket",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Basket by Username",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/basket/igor25",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"igor25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Checkout Basket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BasketCheckoutDto\":\r\n        {\r\n            \"userName\": \"igor22\",\r\n            \"customerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n            \"totalPrice\": 0,\r\n            \"firstName\": \"igor\",\r\n            \"lastName\": \"souza\",\r\n            \"emailAddress\": \"igor@email.com\",\r\n            \"addressLine\": \"st avenue 78\",\r\n            \"country\": \"Brasil\",\r\n            \"state\": \"São Paulo\",\r\n            \"zipCode\": \"00555\",\r\n            \"cardName\": \"igors\",\r\n            \"cardNumber\": \"485-3184\",\r\n            \"expiration\": \"11/30\",\r\n            \"cvv\": \"123\",\r\n            \"paymentMethod\": 1\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basket_url}}/basket/checkout",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Healt",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/health",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordering",
+			"item": [
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders?PageIndex=0&PageSize=2",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/ORD_5",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"ORD_5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders By Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/customer/58c49479-ec65-4de2-86e7-033c546291aa",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"customer",
+								"58c49479-ec65-4de2-86e7-033c546291aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Order\": {\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"ORD_4\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"CARD_1\",\r\n      \"CardNumber\": \"887443739\",\r\n      \"Expiration\": \"12/29\",\r\n      \"Cvv\": \"455\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        // \"ProductName\" : \"IPhone X\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 500\r\n      },\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        // \"ProductName\" : \"Samsung\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 500\r\n      }\r\n    ]\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ordering_url}}/orders",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Order\": {\r\n    \"Id\": \"fbcb83ce-9129-40b5-96dd-cd0cb98be261\",\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"ORD_5\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"Luqinha\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"CARD_2\",\r\n      \"CardNumber\": \"887443739\",\r\n      \"Expiration\": \"12/29\",\r\n      \"Cvv\": \"433\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        // \"ProductName\" : \"IPhone X\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 500\r\n      },\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        // \"ProductName\" : \"Samsung\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 500\r\n      }\r\n    ]\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ordering_url}}/orders",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/6e131bd0-6640-45b1-8167-ebf22014a980",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"6e131bd0-6640-45b1-8167-ebf22014a980"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/health",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "YarpApiGateway",
+			"item": [
+				{
+					"name": "Catalog.Yarp",
+					"item": [
+						{
+							"name": "Get products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products?pageNumber=1&pagesize=5",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products/5334c996-8457-4cf0-815c-ed2b77c4ff61",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products",
+										"5334c996-8457-4cf0-815c-ed2b77c4ff61"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get products by category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products/category/Smart Phone",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products",
+										"category",
+										"Smart Phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create new product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"New Prod h - Test \",\r\n    \"Category\": [\"B\"],\r\n    \"Description\": \"Blank Description\",\r\n    \"ImageFile\": \"Blank ImageFile\",\r\n    \"Price\": 555\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an existing product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"019ada99-440a-4b0a-9511-b87f6a79e112\",\r\n    \"Name\": \"doidera\",\r\n    \"Category\": [\"C3\", \"C4\"],\r\n    \"Description\": \"Blank Description\",\r\n    \"ImageFile\": \"Blank ImageFile\",\r\n    \"Price\": 555\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleting an existing product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products/019adac3-6cdd-4e70-aba8-82d0f09a016b",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products",
+										"019adac3-6cdd-4e70-aba8-82d0f09a016b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Basket.Yarp",
+					"item": [
+						{
+							"name": "Get Basket By Username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/basket-service/basket/igor25",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"basket-service",
+										"basket",
+										"igor25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store Basket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Cart\":\r\n        {\r\n            \"UserName\": \"swn\",\r\n            \"Items\": [\r\n                {\r\n                    \"Quantity\": 2,\r\n                    \"Color\": \"Red\",\r\n                    \"Price\": 500,\r\n                    \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n                    \"ProductName\": \"IPhone X\"\r\n                },\r\n                {\r\n                    \"Quantity\": 1,\r\n                    \"Color\": \"blue\",\r\n                    \"Price\": 500,\r\n                    \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n                    \"ProductName\": \"Samsung 10\"\r\n                }\r\n            ]\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/basket-service/basket",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"basket-service",
+										"basket"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Basket by Username",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/basket-service/basket/igor25",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"basket-service",
+										"basket",
+										"igor25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store Checkout Basket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BasketCheckoutDto\":\r\n        {\r\n            \"userName\": \"swn\",\r\n            \"customerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n            \"totalPrice\": 0,\r\n            \"firstName\": \"igor\",\r\n            \"lastName\": \"souza\",\r\n            \"emailAddress\": \"igor@email.com\",\r\n            \"addressLine\": \"st avenue 78\",\r\n            \"country\": \"Brasil\",\r\n            \"state\": \"São Paulo\",\r\n            \"zipCode\": \"00555\",\r\n            \"cardName\": \"igors\",\r\n            \"cardNumber\": \"485-3184\",\r\n            \"expiration\": \"11/30\",\r\n            \"cvv\": \"123\",\r\n            \"paymentMethod\": 1\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/basket-service/basket/checkout",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"basket-service",
+										"basket",
+										"checkout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ordering.Yarp",
+					"item": [
+						{
+							"name": "Get Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/ordering-service/orders?PageIndex=1&PageSize=2",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"ordering-service",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "1"
+										},
+										{
+											"key": "PageSize",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Orders By Name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/ordering-service/orders/ORD_5",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"ordering-service",
+										"orders",
+										"ORD_5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Orders By Customer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/ordering-service/orders/customer/58c49479-ec65-4de2-86e7-033c546291aa",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"ordering-service",
+										"orders",
+										"customer",
+										"58c49479-ec65-4de2-86e7-033c546291aa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"Order\": {\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"ORD_4\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"CARD_1\",\r\n      \"CardNumber\": \"887443739\",\r\n      \"Expiration\": \"12/29\",\r\n      \"Cvv\": \"455\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        // \"ProductName\" : \"IPhone X\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 500\r\n      },\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        // \"ProductName\" : \"Samsung\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 500\r\n      }\r\n    ]\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/orders",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an existing Order",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"Order\": {\r\n    \"Id\": \"fbcb83ce-9129-40b5-96dd-cd0cb98be261\",\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"ORD_5\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"Luqinha\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"Lucas\",\r\n      \"LastName\": \"Byers\",\r\n      \"EmailAddress\": \"lucas@email.com\",\r\n      \"AddressLine\": \"Howkins 2159\",\r\n      \"Country\": \"USA\",\r\n      \"State\": \"Arkansas\",\r\n      \"ZipCode\": \"55224\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"CARD_2\",\r\n      \"CardNumber\": \"887443739\",\r\n      \"Expiration\": \"12/29\",\r\n      \"Cvv\": \"433\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        // \"ProductName\" : \"IPhone X\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 500\r\n      },\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        // \"ProductName\" : \"Samsung\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 500\r\n      }\r\n    ]\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{yarp_url}}/orders",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/orders/6e131bd0-6640-45b1-8167-ebf22014a980",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"orders",
+										"6e131bd0-6640-45b1-8167-ebf22014a980"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
