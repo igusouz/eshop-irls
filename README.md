@@ -5,11 +5,11 @@
 
 A fully containerized, distributed e-commerce platform built with .NET 8, following DDD, CQRS, Vertical Slice Architecture / Clean Architecture, and a microservices approach.
 
-  
-
 The system exposes its features through a Razor Pages Web App, which communicates exclusively with the backend via a YARP API Gateway.
 
 Internally, services exchange data using REST, gRPC, and RabbitMQ.
+
+All services are orchestrated via Docker, using Docker Compose generated from Visual Studio orchestration tools.
 
   
 
@@ -20,13 +20,7 @@ Internally, services exchange data using REST, gRPC, and RabbitMQ.
 > 8 Microservices: DDD, CQRS, Vertical/Clean Architecture</a> by Mehmet
 > Ozkaya
 
-<br><br>
-
-  
-
-All services are orchestrated via Docker, using Docker Compose generated from Visual Studio orchestration tools.
-
-  
+<br><br>  
 
 ## 🧩 Microservices
 
